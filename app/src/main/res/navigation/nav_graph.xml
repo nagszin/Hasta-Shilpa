@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.hastashilpa.ui.SplashFragment"
+        android:label="Splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.hastashilpa.ui.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_trending"
+            app:destination="@id/navigation_designs" />
+        <action
+            android:id="@+id/action_home_to_tracker"
+            app:destination="@id/navigation_tracker" />
+        <action
+            android:id="@+id/action_home_to_marketplace"
+            app:destination="@id/navigation_marketplace" />
+        <action
+            android:id="@+id/action_home_to_price_suggestion"
+            app:destination="@id/priceSuggestionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_designs"
+        android:name="com.example.hastashilpa.ui.TrendingDesignsFragment"
+        android:label="Trending Designs"
+        tools:layout="@layout/fragment_trending_designs">
+        <action
+            android:id="@+id/action_designs_to_blueprint"
+            app:destination="@id/blueprintLibraryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/blueprintLibraryFragment"
+        android:name="com.example.hastashilpa.ui.BlueprintLibraryFragment"
+        android:label="Blueprint Library"
+        tools:layout="@layout/fragment_blueprint_library" />
+
+    <fragment
+        android:id="@+id/navigation_tracker"
+        android:name="com.example.hastashilpa.ui.MaterialTrackerFragment"
+        android:label="Material Tracker"
+        tools:layout="@layout/fragment_material_tracker" />
+
+    <fragment
+        android:id="@+id/priceSuggestionFragment"
+        android:name="com.example.hastashilpa.ui.PriceSuggestionFragment"
+        android:label="Price Suggestion"
+        tools:layout="@layout/fragment_price_suggestion" />
+
+    <fragment
+        android:id="@+id/navigation_marketplace"
+        android:name="com.example.hastashilpa.ui.MarketplaceFragment"
+        android:label="Marketplace"
+        tools:layout="@layout/fragment_marketplace" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.hastashilpa.ui.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

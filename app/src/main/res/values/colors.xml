@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Bamboo inspired palette -->
+    <color name="bamboo_primary">#556B2F</color> <!-- Olive Drab -->
+    <color name="bamboo_primary_variant">#6B8E23</color> <!-- Olive Drab Light -->
+    <color name="bamboo_secondary">#BC8F8F</color> <!-- Rosy Brown -->
+    <color name="bamboo_background">#F5F5DC</color> <!-- Beige -->
+    <color name="bamboo_surface">#FFF8DC</color> <!-- Cornsilk -->
+    <color name="bamboo_accent">#D2B48C</color> <!-- Tan -->
+
+    <color name="text_primary">#2F4F4F</color>
+    <color name="text_secondary">#696969</color>
+</resources>

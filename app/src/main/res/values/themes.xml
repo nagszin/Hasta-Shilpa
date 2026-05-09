@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.HastaShilpa" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/bamboo_primary</item>
+        <item name="colorSecondary">@color/bamboo_secondary</item>
+        <item name="android:windowBackground">@color/bamboo_background</item>
+    </style>
+
+    <style name="Theme.HastaShilpa" parent="Base.Theme.HastaShilpa" />
+
+    <style name="Theme.HastaShilpa.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

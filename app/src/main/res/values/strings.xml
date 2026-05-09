@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Hasta-Shilpa</string>
+    <string name="welcome_artisan">Welcome, Artisan</string>
+    <string name="motto">Traditional Skills, Modern Aesthetics</string>
+
+    <!-- Navigation -->
+    <string name="title_home">Home</string>
+    <string name="title_designs">Designs</string>
+    <string name="title_tracker">Tracker</string>
+    <string name="title_marketplace">Marketplace</string>
+    <string name="title_profile">Profile</string>
+</resources>
