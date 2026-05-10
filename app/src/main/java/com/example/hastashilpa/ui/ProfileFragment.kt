@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.hastashilpa.R
 import com.example.hastashilpa.databinding.FragmentProfileBinding
 import com.example.hastashilpa.viewmodel.ProfileViewModel
+import java.util.Locale
 
 class ProfileFragment : Fragment() {
 
@@ -30,12 +31,19 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Observe profile details from ViewModel (Persistent via SharedPreferences)
         viewModel.name.observe(viewLifecycleOwner) { name ->
             binding.tvArtisanName.text = name
         }
 
         viewModel.location.observe(viewLifecycleOwner) { location ->
             binding.tvLocation.text = location
+        }
+
+        // Observe live stats from Backend (with local fallback)
+        viewModel.stats.observe(viewLifecycleOwner) { stats ->
+            binding.tvProductsCount.text = stats.productsCreated.toString()
+            binding.tvTotalEarnings.text = String.format(Locale.getDefault(), "₹ %,.0f", stats.totalEarnings)
         }
 
         binding.btnEditProfile.setOnClickListener {

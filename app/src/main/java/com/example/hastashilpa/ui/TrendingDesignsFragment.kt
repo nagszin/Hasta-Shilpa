@@ -33,13 +33,16 @@ class TrendingDesignsFragment : Fragment() {
 
         viewModel.designs.observe(viewLifecycleOwner) { designs ->
             val adapter = DesignAdapter(designs) { design ->
-                findNavController().navigate(R.id.action_designs_to_blueprint)
+                val bundle = Bundle().apply {
+                    putSerializable("designItem", design)
+                }
+                findNavController().navigate(R.id.action_designs_to_blueprint, bundle)
             }
             binding.rvTrendingDesigns.adapter = adapter
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            // You could show a ProgressBar here
+            // UI feedback for loading state
         }
     }
 

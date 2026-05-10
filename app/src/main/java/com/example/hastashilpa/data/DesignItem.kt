@@ -1,5 +1,7 @@
 package com.example.hastashilpa.data
 
+import java.io.Serializable
+
 data class DesignItem(
     val id: Int,
     val name: String,
@@ -9,4 +11,4 @@ data class DesignItem(
     val materials: String = "",
     val difficulty: String = "Medium",
     val estimatedTime: String = "5 hours"
-)
+) : Serializable

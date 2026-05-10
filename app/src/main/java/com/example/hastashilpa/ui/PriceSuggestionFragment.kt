@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.hastashilpa.databinding.FragmentPriceSuggestionBinding
+import com.example.hastashilpa.network.PriceCalculationRequest
+import com.example.hastashilpa.network.RetrofitClient
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class PriceSuggestionFragment : Fragment() {
@@ -42,14 +46,26 @@ class PriceSuggestionFragment : Fragment() {
             return
         }
 
-        val laborCost = hours * rate
-        val baseCost = materialCost + laborCost
-        val profitAmount = baseCost * (profitPercent / 100.0)
-        val totalPrice = baseCost + profitAmount
+        lifecycleScope.launch {
+            try {
+                val request = PriceCalculationRequest(materialCost, hours, rate, profitPercent)
+                val response = RetrofitClient.apiService.calculatePrice(request)
+                
+                binding.tvSuggestedPrice.text = "₹ ${response.suggestedPrice}"
+                binding.tvEstimatedProfit.text = "Estimated Profit: ₹ ${response.profitAmount} (AI Confidence: ${response.aiConfidence})"
+                binding.cardResult.visibility = View.VISIBLE
+            } catch (e: Exception) {
+                // Fallback to local calculation if backend is down
+                val laborCost = hours * rate
+                val baseCost = materialCost + laborCost
+                val profitAmount = baseCost * (profitPercent / 100.0)
+                val totalPrice = baseCost + profitAmount
 
-        binding.tvSuggestedPrice.text = String.format(Locale.getDefault(), "₹ %.2f", totalPrice)
-        binding.tvEstimatedProfit.text = String.format(Locale.getDefault(), "Estimated Profit: ₹ %.2f", profitAmount)
-        binding.cardResult.visibility = View.VISIBLE
+                binding.tvSuggestedPrice.text = String.format(Locale.getDefault(), "₹ %.2f", totalPrice)
+                binding.tvEstimatedProfit.text = String.format(Locale.getDefault(), "Estimated Profit: ₹ %.2f (Local Calc)", profitAmount)
+                binding.cardResult.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onDestroyView() {

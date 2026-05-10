@@ -50,7 +50,11 @@
         android:id="@+id/blueprintLibraryFragment"
         android:name="com.example.hastashilpa.ui.BlueprintLibraryFragment"
         android:label="Blueprint Library"
-        tools:layout="@layout/fragment_blueprint_library" />
+        tools:layout="@layout/fragment_blueprint_library">
+        <argument
+            android:name="designItem"
+            app:argType="com.example.hastashilpa.data.DesignItem" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_tracker"
